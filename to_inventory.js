@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -15,8 +15,8 @@ function Display_Inventory({ refresh }) {
   }, [refresh]);
   
   return (
-    <div>
-      <h1>Inventory Management</h1>
+    <div><center>
+      <br></br><hr></hr>
       <table>
         <thead>
           <tr>
@@ -36,7 +36,7 @@ function Display_Inventory({ refresh }) {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table></center>
     </div>
   );
 }
@@ -63,7 +63,7 @@ function AddInventory() {
       const response = await axios.post("http://localhost:8000/add", fo);
       console.log(response.data)
       setRefresh(prev => prev + 1);
-      // Clear input fields after submit
+
       setName("");
       setQty("");
       setPrice("");
@@ -72,7 +72,7 @@ function AddInventory() {
   }
     
   return (
-    <div>
+    <div><center>
       <h1>Inventory Management</h1>
 
       <table>      
@@ -96,8 +96,9 @@ function AddInventory() {
       {error && <p style={{color: 'red', fontWeight: 'bold'}}>{error}</p>}
       <button onClick={SubmitEvent}>Submit</button>
       <Display_Inventory refresh={refresh} />
+    </center>
     </div>
   );
 }
 
-export { Display_Inventory, AddInventory };
+export { AddInventory };
